@@ -43,7 +43,7 @@ int main()
     Algorithm1(currentSudoku);
     Algorithm3(currentSudoku);
     printToConsole(currentSudoku);
-    printf("%s", isSolved(currentSudoku) ? "solved" : "!");
+    printf("%s", isSolved(currentSudoku) ? "solved" : "!!!!");
     return 0;
 }
 

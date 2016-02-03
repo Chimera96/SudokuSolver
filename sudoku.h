@@ -28,27 +28,16 @@ bool isSolved(sudoku sudo)
     for(short x = 0; x < 9; x++)
     {
         sumRow = 0;
-        short rowParts[9] = {0,0,0, 0,0,0, 0,0,0};
         sumCol = 0;
-        short colParts[9] = {0,0,0, 0,0,0, 0,0,0};
         for(short y = 0; y < 9; y++)
         {
             sumCol   += sudo[x][y];
             sumRow   += sudo[y][x];
             sumTotal += sudo[y][x];
-
-            rowParts[sudo[x][y]]++;
-            colParts[sudo[y][x]]++;
         }
 
         //cached for performance (1 + 2 + ... + 9)
         if(sumRow != 45 || sumCol != 45) return false;
-
-        for(short i = 0; i < 9; i++)
-        {
-            if(rowParts[i] != 1) return false;
-            //if(colParts[i] != 1) return false;
-        }
     }
 
     //cached for performance (9*1 + 9*2 + ... + 9*9)
@@ -60,7 +49,6 @@ bool isSolved(sudoku sudo)
         for(short y = 0; y < 9; y += 3)
         {
             sumSqu = 0;
-            short squParts[9] = {0,0,0, 0,0,0, 0,0,0};
             short aX = (x - x%3);
             short aY = (y - y%3);
             for(short sx = 0; sx < 3; sx++)
@@ -68,17 +56,11 @@ bool isSolved(sudoku sudo)
                 for(short sy = 0; sy < 3; sy++)
                 {
                     sumSqu += sudo[aY + sy][aX + sx];
-                    squParts[(sudo[aY + sy][aX + sx])]++;
                 }
             }
 
             //cached for performance (1 + 2 + ... + 9)
             if(sumSqu != 45) return false;
-
-            for(short i = 0; i < 9; i++)
-            {
-                //if(squParts[i] != 1) return false;
-            }
         }
     }
 
