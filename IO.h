@@ -1,17 +1,17 @@
-void readFile();
-void writeFile(sudoku sudo /*, string path*/);
+void readFile(const char* path);
+void writeFile(sudoku sudo, const char* path);
 void readFromConsole(sudoku sudo);
 void printToConsole(sudoku sudo);
 
-void readFile()
+void readFile(const char* path)
 {
 
 }
 
-void writeFile(sudoku sudo /*, string path*/)
+void writeFile(sudoku sudo, const char* path)
 {
     FILE *datei;
-    datei = fopen("test.txt", "w");
+    datei = fopen(path, "w");
 
     for(short y = 0; y < 9; y++)
     {
