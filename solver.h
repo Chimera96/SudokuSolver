@@ -130,7 +130,7 @@ void Algorithm3(sudoku sudo)
             {//Rows & Cols
                 if(sudo[a][b] == EMPTY)
                 {//Rows
-                    for(int i = 1; i <= 9; i++)
+                    for(short i = 1; i <= 9; i++)
                     {
                         if(isPlaceable(sudo, b, a, i))
                         {
@@ -140,7 +140,7 @@ void Algorithm3(sudoku sudo)
                 }
                 if(sudo[b][a] == EMPTY)
                 {//Cols
-                    for(int i = 1; i <= 9; i++)
+                    for(short i = 1; i <= 9; i++)
                     {
                         if(isPlaceable(sudo, a, b, i))
                         {
@@ -150,13 +150,13 @@ void Algorithm3(sudoku sudo)
                 }
             }
 
-            for (int y = 0; y < 3; y++)
+            for (short y = 0; y < 3; y++)
             {//Squares
-                for (int x = 0; x < 3; x++)
+                for (short x = 0; x < 3; x++)
                 {
                     if(sudo[sqY+y][sqX+x] == EMPTY)
                     {
-                        for(int i = 1; i <= 9; i++)
+                        for(short i = 1; i <= 9; i++)
                         {
                             if(isPlaceable(sudo, sqX+x, sqY+y, i))
                             {
@@ -200,9 +200,9 @@ void Algorithm3(sudoku sudo)
                 }
                 if(placeableSqur[i-1] == 1)
                 {
-                    for (int y = 0; y < 3; y++)
+                    for (short y = 0; y < 3; y++)
                     {//Squares
-                        for (int x = 0; x < 3; x++)
+                        for (short x = 0; x < 3; x++)
                         {
                             if(sudo[sqY+y][sqX+x] == EMPTY)
                             {
@@ -226,3 +226,34 @@ void Algorithm3(sudoku sudo)
 
 //backtracking approach
 //retParam backtracking(short pX, int pY, int i, sudoku field)
+
+
+
+/*
+bool solverBT1(int einsetz, int x, int y, int[,] cfeld)
+{
+    int[,] copyfeld = new int[9, 9];
+    Array.Copy(cfeld, copyfeld, cfeld.Length);
+    copyfeld[x, y] = einsetz;
+
+    for (int ax = 0; ax <= 8; ax++)
+    {
+        for (int ay = 0; ay <= 8; ay++)
+        {
+            if (copyfeld[ax, ay] == 0)
+            {
+                for (int var = 1; var <= 9; var++)
+                {
+                    if (erlaubt(ax, ay, var, copyfeld))
+                    {
+                        solverBT1(var, ax, ay, copyfeld);
+                    }
+                }
+                return false;
+            }
+        }
+    }
+    Array.Copy(copyfeld, feld, copyfeld.Length);
+    return true;
+}
+*/
