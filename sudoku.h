@@ -1,6 +1,13 @@
 #define EMPTY 0
 #define NONE -1
 
+//cached for better performance
+//(1 + 2 + ... + 9)
+#define SUM 45
+
+//(9*1 + 9*2 + ... + 9*9)
+#define SUMTOTAL 405
+
 typedef short sudoku[9][9];
 bool isPlaceable(sudoku sudo, short px, short py, short pi);
 bool isSolved(sudoku sudo);
@@ -8,22 +15,25 @@ bool isSolved(sudoku sudo);
 bool isPlaceable(sudoku sudo, short px, short py, short pi)
 {
     for(short y = 0; y < 9; y++)
-        if(sudo[y][px] == pi) return false;
+        if(sudo[y][px] == pi)
+            return false;
     for(short x = 0; x < 9; x++)
-        if(sudo[py][x] == pi) return false;
+        if(sudo[py][x] == pi)
+            return false;
     short aX = (px - px%3);
     short aY = (py - py%3);
     for(short sx = 0; sx < 3; sx++)
     for(short sy = 0; sy < 3; sy++)
-        if(sudo[aY + sy][aX + sx] == pi) return false;
+        if(sudo[aY + sy][aX + sx] == pi)
+            return false;
     return true;
 }
 
 bool isSolved(sudoku sudo)
 {
-    short sumTotal = 0;
-    short sumRow = 0;
-    short sumCol = 0;
+    short sumTotal = 0,
+          sumRow   = 0,
+          sumCol   = 0;
 
     for(short x = 0; x < 9; x++)
     {
@@ -36,12 +46,12 @@ bool isSolved(sudoku sudo)
             sumTotal += sudo[y][x];
         }
 
-        //cached for performance (1 + 2 + ... + 9)
-        if(sumRow != 45 || sumCol != 45) return false;
+        if(sumRow != SUM || sumCol != SUM)
+            return false;
     }
 
-    //cached for performance (9*1 + 9*2 + ... + 9*9)
-    if(sumTotal != 405) return false;
+    if(sumTotal != SUMTOTAL)
+        return false;
 
     short sumSqu = 0;
     for(short x = 0; x < 9; x += 3)
@@ -59,10 +69,47 @@ bool isSolved(sudoku sudo)
                 }
             }
 
-            //cached for performance (1 + 2 + ... + 9)
-            if(sumSqu != 45) return false;
+            if(sumSqu != SUM)
+                return false;
         }
     }
 
+    for(int x = 0; x < 9; x++)
+    {
+        short placedCols[9] = {0,0,0,0,0,0,0,0,0};
+        short placedRows[9] = {0,0,0,0,0,0,0,0,0};
+        for(int y = 0; y < 9; y++)
+        {
+            placedCols[sudo[x][y]]++;
+            placedRows[sudo[y][x]]++;
+        }
+        for(int i = 0; i < 9; i++)
+        {
+            if(placedCols[i] > 1 || placedRows[i] > 1)
+                return false;
+        }
+    }
+
+    for(short x = 0; x < 9; x += 3)
+    {
+        for(short y = 0; y < 9; y += 3)
+        {
+            short placedSqur[9] = {0,0,0,0,0,0,0,0,0};
+            short aX = (x - x%3);
+            short aY = (y - y%3);
+            for(short sx = 0; sx < 3; sx++)
+            {
+                for(short sy = 0; sy < 3; sy++)
+                {
+                    placedSqur[sudo[aY + sy][aX + sx]]++;
+                }
+            }
+            for(int i = 0; i < 9; i++)
+            {
+                if(placedSqur[i] > 1)
+                    return false;
+            }
+        }
+    }
     return true;
 }

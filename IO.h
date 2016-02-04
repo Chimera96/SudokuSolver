@@ -17,14 +17,7 @@ void writeFile(sudoku sudo /*, string path*/)
     {
         for(short x = 0; x < 9; x++)
         {
-            if(sudo[y][x] == EMPTY) //TODO make  ?:; - expression
-            {
-                fprintf(datei, " ", sudo[y][x]);
-            }
-            else
-            {
-                fprintf(datei, "%d", sudo[y][x]);
-            }
+            fprintf(datei, (sudo[y][x] == EMPTY) ? " " : "%d", sudo[y][x]);
         }
         if(y+1 < 9)
         {

@@ -223,3 +223,6 @@ void Algorithm3(sudoku sudo)
 
 //alg4 (3 with cache)
 //heuristic approach
+
+//backtracking approach
+//retParam backtracking(short pX, int pY, int i, sudoku field)

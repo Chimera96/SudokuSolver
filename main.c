@@ -25,7 +25,7 @@ int main()
         { 0,0,0, 0,0,0, 4,0,9 },
         { 0,0,0, 0,7,0, 5,1,0 }
     };
-
+writeFile(currentSudoku);
     /*= {//Difficult one
             { 7,0,3, 0,0,0, 0,0,0 },
             { 0,6,0, 0,0,0, 8,0,0 },
@@ -44,6 +44,7 @@ int main()
     Algorithm3(currentSudoku);
     printToConsole(currentSudoku);
     printf("%s", isSolved(currentSudoku) ? "solved" : "!!!!");
+
     return 0;
 }
 
