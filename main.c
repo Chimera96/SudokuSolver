@@ -46,7 +46,7 @@ int main()
 
     //algorithm1(currentSudoku);
     //algorithm3(currentSudoku);
-    //generateSudoku(42, currentSudoku);
+    generateOneSolutionSudoku(30, currentSudoku);
     printToConsole(currentSudoku);
     printf("%s", isSolved(currentSudoku) ? "solved" : "!!!!");
 

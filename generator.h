@@ -1,13 +1,16 @@
 //Fastest results with 26-30
 #define MAGIC_NUMBER 28
 
+void generateSudoku(int numberCount, sudoku sudo);
+void generateOneSolutionSudoku(int numberCount, sudoku sudo);
+
 void generateSudoku(int numberCount, sudoku sudo)
 {
     do
     {   //reset sudoku
         for(short y = 0; y < 9; y++)
-        for(short x = 0; x < 9; x++)
-            sudo[y][x] = 0;
+            for(short x = 0; x < 9; x++)
+                sudo[y][x] = 0;
 
         //place <magic_number> Numbers
         short placed = 0;
@@ -47,9 +50,15 @@ void generateSudoku(int numberCount, sudoku sudo)
     }
 }
 
-/*void generateSudokuOneSolution(int numberCount, sudoku sudo)
+void generateOneSolutionSudoku(int numberCount, sudoku sudo)
 {//generate sudokus that have only one solution
+    //doesn't work with numbers < 17 !!!
+    sudoku suCopy;
     do
-    {
-    } while ()
-}*/
+    {   generateSudoku(numberCount, sudo);
+        copySudoku(sudo, suCopy);
+        algorithm1(sudo);
+        algorithm3(sudo);
+    } while (!isSolved(sudo));
+    copySudoku(suCopy, sudo);
+}

@@ -32,8 +32,10 @@ void readFromConsole(sudoku sudo)
     for(short line = 0; line < 9; line++)
     {
         printf("line %d: ", (line+1));
-        scanf("%hd %hd %hd %hd %hd %hd %hd %hd %hd", &sudo[line][0], &sudo[line][1], &sudo[line][2],
-            &sudo[line][3], &sudo[line][4], &sudo[line][5], &sudo[line][6], &sudo[line][7], &sudo[line][8]);
+        scanf("%hd %hd %hd %hd %hd %hd %hd %hd %hd",
+            &sudo[line][0], &sudo[line][1], &sudo[line][2],
+            &sudo[line][3], &sudo[line][4], &sudo[line][5],
+            &sudo[line][6], &sudo[line][7], &sudo[line][8]);
     }
 }
 

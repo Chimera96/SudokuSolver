@@ -11,6 +11,7 @@
 typedef short sudoku[9][9];
 bool isPlaceable(sudoku sudo, short px, short py, short pi);
 bool isSolved(sudoku sudo);
+void copySudoku(sudoku source, sudoku destination);
 
 bool isPlaceable(sudoku sudo, short px, short py, short pi)
 {
@@ -112,4 +113,11 @@ bool isSolved(sudoku sudo)
         }
     }
     return true;
+}
+
+void copySudoku(sudoku source, sudoku destination)
+{
+    for(short y = 0; y < 9; y++)
+        for(short x = 0; x < 9; x++)
+            destination[y][x] = source[y][x];
 }
