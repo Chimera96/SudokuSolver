@@ -1,3 +1,4 @@
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -11,6 +12,9 @@ void printProjectTitle();
 
 int main()
 {
+    //seed the random function
+    srand(time(NULL));
+
     printProjectTitle();
     sudoku currentSudoku = {//easy one
         { 0,9,4, 0,3,0, 0,0,0 },
@@ -40,8 +44,9 @@ int main()
             { 0,0,0, 0,8,5, 0,7,1 }
         };*/
 
-    Algorithm1(currentSudoku);
-    Algorithm3(currentSudoku);
+    //algorithm1(currentSudoku);
+    //algorithm3(currentSudoku);
+    //generateSudoku(42, currentSudoku);
     printToConsole(currentSudoku);
     printf("%s", isSolved(currentSudoku) ? "solved" : "!!!!");
 

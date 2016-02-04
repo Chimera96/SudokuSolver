@@ -28,8 +28,8 @@ void generateSudoku(int numberCount, sudoku sudo)
 
         //TODO add other algs.
         //try solving
-        Algorithm1(sudo);
-        Algorithm3(sudo);
+        algorithm1(sudo);
+        algorithm3(sudo);
     } while (!isSolved(sudo));
 
     //remove (random)numbers

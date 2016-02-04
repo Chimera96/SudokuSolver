@@ -1,10 +1,10 @@
-void Algorithm1(sudoku sudo);
-void Algorithm2(sudoku sudo);
-void Algorithm3(sudoku sudo);
-void Algorithm4(sudoku sudo);
+void algorithm1(sudoku sudo);
+void algorithm2(sudoku sudo);
+void algorithm3(sudoku sudo);
+void algorithm4(sudoku sudo);
 
 //simple exhaustive search
-void Algorithm1(sudoku sudo)
+void algorithm1(sudoku sudo)
 {
     bool couldPlace = false;
     do
@@ -43,7 +43,7 @@ void Algorithm1(sudoku sudo)
 }
 
 //same as 1 but with caching
-void Algorithm2(sudoku sudo)
+void algorithm2(sudoku sudo)
 {
     //prepare cache
     short cache[9][9][9];
@@ -112,7 +112,7 @@ void Algorithm2(sudoku sudo)
     } while (couldPlace);
 }
 
-void Algorithm3(sudoku sudo)
+void algorithm3(sudoku sudo)
 {
     bool couldPlace = false;
     do
