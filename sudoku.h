@@ -1,14 +1,6 @@
-#define EMPTY 0
-#define NONE -1
-
-//cached for better performance
-//(1 + 2 + ... + 9)
 #define SUM 45
-
-//(9*1 + 9*2 + ... + 9*9)
 #define SUMTOTAL 405
 
-typedef short sudoku[9][9];
 bool isPlaceable(sudoku sudo, short px, short py, short pi);
 bool isSolved(sudoku sudo);
 void copySudoku(sudoku source, sudoku destination);
@@ -32,6 +24,11 @@ bool isPlaceable(sudoku sudo, short px, short py, short pi)
 
 bool isSolved(sudoku sudo)
 {
+    for(short x = 0; x < 9; x++)
+        for(short y = 0; y < 9; y++)
+            if(sudo[x][y] == 0)
+                return false;
+
     short sumTotal = 0,
           sumRow   = 0,
           sumCol   = 0;

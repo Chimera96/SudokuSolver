@@ -1,7 +1,8 @@
 void algorithm1(sudoku sudo);
 void algorithm2(sudoku sudo);
 void algorithm3(sudoku sudo);
-void algorithm4(sudoku sudo);
+
+bool algorithmBT(sudoku sudo);
 
 //simple exhaustive search
 void algorithm1(sudoku sudo)
@@ -224,36 +225,32 @@ void algorithm3(sudoku sudo)
 //alg4 (3 with cache)
 //heuristic approach
 
-//backtracking approach
-//retParam backtracking(short pX, int pY, int i, sudoku field)
-
-
-
-/*
-bool solverBT1(int einsetz, int x, int y, int[,] cfeld)
+//backtracking
+bool algorithmBT(sudoku sudo)
 {
-    int[,] copyfeld = new int[9, 9];
-    Array.Copy(cfeld, copyfeld, cfeld.Length);
-    copyfeld[x, y] = einsetz;
+    if(isSolved(sudo))
+        return true;
 
-    for (int ax = 0; ax <= 8; ax++)
+    for(short y = 0; y < 9; y++)
     {
-        for (int ay = 0; ay <= 8; ay++)
+        for(short x = 0; x < 9; x++)
         {
-            if (copyfeld[ax, ay] == 0)
+            if(sudo[y][x] == EMPTY)
             {
-                for (int var = 1; var <= 9; var++)
+                for(short i = 1; i <= 9; i++)
                 {
-                    if (erlaubt(ax, ay, var, copyfeld))
+                    if(isPlaceable(sudo, x, y, i))
                     {
-                        solverBT1(var, ax, ay, copyfeld);
+                        sudo[y][x] = i;
+                        if(algorithmBT(sudo))
+                            return true;
+                        else
+                            sudo[y][x] = 0;
                     }
                 }
                 return false;
             }
         }
     }
-    Array.Copy(copyfeld, feld, copyfeld.Length);
-    return true;
+    return false;
 }
-*/
