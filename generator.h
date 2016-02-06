@@ -14,7 +14,7 @@ void generateSudoku(int numberCount, sudoku sudo)
             for(short x = 0; x < 9; x++)
                 sudo[y][x] = 0;
 
-        //place <magic_number> Numbers
+        //place <MAGIC_NUMBER> Numbers
         short placed = 0;
         do
         {   short y, x;

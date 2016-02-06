@@ -63,13 +63,9 @@ void printPlaceables(sudoku sudo)
                 for(short i = 1; i <= 9; i++)
                 {
                     if(isPlaceable(sudo, x, y, i))
-                    {
                         printf("%d", i);
-                    }
                     else
-                    {
                         printf("_");
-                    }
                 }
                 printf(((x + 1) % 3 == 0) ? "    " : " ");
             }

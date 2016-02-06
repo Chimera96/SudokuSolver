@@ -26,7 +26,7 @@ bool isSolved(sudoku sudo)
 {
     for(short x = 0; x < 9; x++)
         for(short y = 0; y < 9; y++)
-            if(sudo[x][y] == 0)
+            if(sudo[x][y] == EMPTY)
                 return false;
 
     short sumTotal = 0,
