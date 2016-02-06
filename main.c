@@ -31,7 +31,7 @@ int main()
             { 0,0,0, 0,0,0, 0,0,0 }
         };
 
-        generateOneSolutionSudoku(35, currentSudoku);
+    generateSudoku(35, currentSudoku);
 
     //algorithm1(currentSudoku);
     //algorithm2(currentSudoku);
@@ -39,7 +39,6 @@ int main()
     algorithmBT(currentSudoku);
 
     printToConsole(currentSudoku);
-    printPlaceables(currentSudoku);
 
     printf("%s", isSolved(currentSudoku) ? "solved" : "!!!!");
 

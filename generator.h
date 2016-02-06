@@ -1,6 +1,5 @@
-//Fastest results with 26-30
-//TODO TEST DIFFERENT VALUES
-#define MAGIC_NUMBER 28
+//Fastest results with 28-30
+#define MAGIC_NUMBER 29
 #define LOWER_BOUND_LIMIT 17
 
 void generateSudoku(int numberCount, sudoku sudo);
