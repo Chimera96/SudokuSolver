@@ -2,6 +2,7 @@ void readFile(const char* path);
 void writeFile(sudoku sudo, const char* path);
 void readFromConsole(sudoku sudo);
 void printToConsole(sudoku sudo);
+void printPlaceables(sudoku sudo);
 
 void readFile(const char* path)
 {
@@ -51,8 +52,33 @@ void printToConsole(sudoku sudo)
     }
 }
 
-//TODO func that shows what numbers are placeable at pos x
-/*
-    123456789 123456789 1         123456789 x         x ...
-    x         2345
-*/
+void printPlaceables(sudoku sudo)
+{
+    for(short y = 0; y < 9; y++)
+    {
+        for(short x = 0; x < 9; x++)
+        {
+            if(sudo[y][x] == EMPTY)
+            {
+                for(short i = 1; i <= 9; i++)
+                {
+                    if(isPlaceable(sudo, x, y, i))
+                    {
+                        printf("%d", i);
+                    }
+                    else
+                    {
+                        printf("_");
+                    }
+                }
+                printf(((x + 1) % 3 == 0) ? "    " : " ");
+            }
+            else
+            {
+                printf("---------");
+                printf(((x + 1) % 3 == 0) ? "    " : " ");
+            }
+        }
+        printf(((y + 1) % 3 == 0) ? "\n\n" :"\n");
+    }
+}

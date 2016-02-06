@@ -1,5 +1,7 @@
 //Fastest results with 26-30
+//TODO TEST DIFFERENT VALUES
 #define MAGIC_NUMBER 28
+#define LOWER_BOUND_LIMIT 17
 
 void generateSudoku(int numberCount, sudoku sudo);
 void generateOneSolutionSudoku(int numberCount, sudoku sudo);
@@ -29,10 +31,7 @@ void generateSudoku(int numberCount, sudoku sudo)
             }
         } while(placed < MAGIC_NUMBER);
 
-        //TODO add other algs.
-        //try solving
-        algorithm1(sudo);
-        algorithm3(sudo);
+        algorithmBT(sudo);
     } while (!isSolved(sudo));
 
     //remove (random)numbers
@@ -52,7 +51,9 @@ void generateSudoku(int numberCount, sudoku sudo)
 
 void generateOneSolutionSudoku(int numberCount, sudoku sudo)
 {//generate sudokus that have only one solution
-    //doesn't work with numbers < 17 !!!
+    if(numberCount < LOWER_BOUND_LIMIT)
+        return;
+    //slow for numbers < 30
     sudoku suCopy;
     do
     {   generateSudoku(numberCount, sudo);
