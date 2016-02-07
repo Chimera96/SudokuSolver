@@ -245,7 +245,7 @@ bool algorithmBT(sudoku sudo)
                         if(algorithmBT(sudo))
                             return true;
                         else
-                            sudo[y][x] = 0;
+                            sudo[y][x] = EMPTY;
                     }
                 }
                 return false;
