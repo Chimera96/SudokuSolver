@@ -30,7 +30,10 @@ void readFile(sudoku sudo, const char* path)
         }
         for(j = 0; j < G; j++)
         {
-            feld[i][j] = temp[j] - '0';
+            if(temp[j] >= '0' && temp[j] <= '9')
+                feld[i][j] = temp[j] - '0';
+            else
+                succeeded = false;
         }
     }
     fclose(fp);
@@ -38,7 +41,7 @@ void readFile(sudoku sudo, const char* path)
     if(succeeded)
         copySudoku(feld, sudo);
     else
-        printf("Datei nicht lesbar");
+        printf("Datei nicht lesbar !\n");
 }
 
 void writeFile(sudoku sudo, const char* path)
