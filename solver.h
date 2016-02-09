@@ -222,8 +222,8 @@ void algorithm3(sudoku sudo)
     } while (couldPlace);
 }
 
-//alg4 (3 with cache)
-//heuristic approach
+//TODO alg4 (3 with cache)
+//TODO heuristic approach
 
 //backtracking
 bool algorithmBT(sudoku sudo)

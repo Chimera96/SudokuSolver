@@ -12,6 +12,7 @@ void printPlaceables(sudoku sudo);
 
 void readFile(sudoku sudo, const char* path)
 {
+    //TODO check if file is unavailable
     FILE *fp;
     sudoku feld;
     int i, j;
