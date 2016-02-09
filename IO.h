@@ -66,6 +66,7 @@ void writeFile(sudoku sudo, const char* path)
 
 void readFromConsole(sudoku sudo)
 {
+    //TODO
     for(short line = 0; line < 9; line++)
     {
         printf("line %d: ", (line+1));

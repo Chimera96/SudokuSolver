@@ -57,8 +57,8 @@ bool isSolved(sudoku sudo)
         for(short y = 0; y < 9; y += 3)
         {
             sumSqu = 0;
-            short aX = (x - x%3);
-            short aY = (y - y%3);
+            short aX = (x - x%3),
+                  aY = (y - y%3);
             for(short sx = 0; sx < 3; sx++)
             {
                 for(short sy = 0; sy < 3; sy++)
@@ -93,8 +93,8 @@ bool isSolved(sudoku sudo)
         for(short y = 0; y < 9; y += 3)
         {
             short placedSqur[9] = {0,0,0,0,0,0,0,0,0};
-            short aX = (x - x%3);
-            short aY = (y - y%3);
+            short aX = (x - x%3),
+                  aY = (y - y%3);
             for(short sx = 0; sx < 3; sx++)
             {
                 for(short sy = 0; sy < 3; sy++)
