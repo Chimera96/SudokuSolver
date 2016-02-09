@@ -1,12 +1,44 @@
-void readFile(const char* path);
+void readFile (sudoku sudo, const char* path);
 void writeFile(sudoku sudo, const char* path);
 void readFromConsole(sudoku sudo);
 void printToConsole(sudoku sudo);
 void printPlaceables(sudoku sudo);
 
-void readFile(const char* path)
-{
+#define G 9
 
+/*
+    path is the relative path to the file
+*/
+
+void readFile(sudoku sudo, const char* path)
+{
+    FILE *fp;
+    sudoku feld;
+    int i, j;
+    char temp[G+3] = {0};
+    bool succeeded = true;
+
+    fp = fopen(path, "r");
+
+    for(i = 0; i < G; i++)
+    {
+        if(fgets(temp, G + 3, fp) == NULL)
+        {
+            printf("Daten nicht vollstaendig!\n");
+            fclose(fp);
+            succeeded = false;
+        }
+        for(j = 0; j < G; j++)
+        {
+            feld[i][j] = temp[j] - '0';
+        }
+    }
+    fclose(fp);
+
+    if(succeeded)
+        copySudoku(feld, sudo);
+    else
+        printf("Datei nicht lesbar");
 }
 
 void writeFile(sudoku sudo, const char* path)
